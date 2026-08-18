@@ -1,0 +1,70 @@
+/* Calibrated proportions for the About and Playground artboards. */
+.about-reference-hero h1 {
+  margin-left: clamp(150px, 12vw, 240px);
+  margin-right: 0;
+  text-align: left;
+}
+
+.creative-zodiac {
+  grid-template-columns: repeat(3, minmax(0, 330px));
+  justify-content: center;
+  gap: 28px;
+}
+
+.creative-zodiac .creative-tile {
+  width: 100%;
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+.creative-zodiac .creative-tile img {
+  height: clamp(350px, 31vw, 470px);
+  object-fit: contain;
+}
+
+.creative-motion {
+  grid-template-columns: repeat(2, minmax(0, 390px));
+  justify-content: center;
+  gap: 40px;
+}
+
+.creative-motion .creative-tile {
+  width: 100%;
+}
+
+.creative-motion .creative-tile video {
+  width: 100%;
+  height: clamp(390px, 36vw, 480px);
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  background: #111;
+}
+
+@media (max-width: 700px) {
+  .about-reference-hero h1 {
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .creative-zodiac {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .creative-zodiac .creative-tile {
+    max-width: none;
+  }
+
+  .creative-zodiac .creative-tile img {
+    height: clamp(235px, 58vw, 360px);
+  }
+
+  .creative-motion {
+    grid-template-columns: minmax(0, 390px);
+    gap: 28px;
+  }
+
+  .creative-motion .creative-tile video {
+    height: min(115vw, 500px);
+  }
+}

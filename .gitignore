@@ -1,0 +1,18 @@
+# Dependencies and Next.js build output
+node_modules/
+.next/
+
+# Local working files and visual QA artifacts
+work/
+outputs/
+*-comparison.png
+*-implementation.png
+*-local.png
+*-source.png
+design-qa.md
+
+# Local editor and environment files
+.env*
+.vercel/
+*.log
+tsconfig.tsbuildinfo
