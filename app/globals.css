@@ -147,8 +147,32 @@
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
 @media (max-width:700px) { .selected-name b { font-size:clamp(3.2rem,13.4vw,4.6rem); } .intro-word { font-size:20vw; } }
 
-.canva-preview { height: clamp(420px, 72vh, 760px); overflow: hidden; border-radius: 8px; background: #fff; }
-.canva-preview iframe { width: 100%; height: 100%; border: 0; background: #fff; }
+.canva-preview {
+  display: flex;
+  min-width: 0;
+  height: min(54dvh, 540px);
+  min-height: 240px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.canva-preview iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+}
+
+@media (min-width: 768px) {
+  .canva-preview {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 320px;
+  }
+}
 
 /* Standalone About page */
 .about-page { min-height: 100vh; padding-top: 49px; }
