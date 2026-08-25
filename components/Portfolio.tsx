@@ -9,6 +9,7 @@ import { ProjectModal } from "./ProjectModal";
 import { HomeProjectStack } from "./HomeProjectStack";
 import { RulerTracker } from "./RulerTracker";
 import { ContactBanner } from "./ContactBanner";
+import { SelectedLooks } from "./LookLab";
 
 const homeProjectIds = ["functional-fashion", "material-experimental", "valentino-beauty-korea", "maison-margiela-machimachi"];
 
@@ -60,6 +61,7 @@ export default function Portfolio() {
       </div>
     </section>
     <section id="projects" className="projects-canvas canvas-section"><p className="scribble work-note">explore my work!<br /><u>______</u></p><h2 className="pixel-heading">FEATURED<br />WORKS</h2><p className="project-postit">Four selected projects.<br />Scroll to explore each file.</p><HomeProjectStack projects={homeProjects} onSelect={setSelected} /><a className="home-all-work-link" href="/case-study">VIEW ALL CASE STUDIES &nbsp;↗</a></section>
+    <SelectedLooks />
     <section id="playground" className="play-canvas canvas-section"><p className="scribble">the artist corner!</p><div className="play-object one">✿</div><div className="play-object two">☻</div><div className="play-object three">✦</div><h2>Colour experiments,<br /><i>tiny obsessions</i> and<br />happy accidents.</h2></section>
     <ContactBanner />
     <ProjectModal project={selected} onClose={() => setSelected(null)} />

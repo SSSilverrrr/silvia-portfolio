@@ -8,6 +8,7 @@ type ArchiveItem = {
   detail: string;
   src: string;
   type?: "image" | "video";
+  software?: string;
 };
 
 const featured: ArchiveItem[] = [
@@ -25,8 +26,8 @@ const zodiac: ArchiveItem[] = [
 ];
 
 const motionWorks: ArchiveItem[] = [
-  { title: "Classic of Mountains and Seas", detail: "Personal video edit", src: "/creative-archive/edited-film.mov", type: "video" },
-  { title: "My Italian Life", detail: "Original animation", src: "/creative-archive/animation-study.mov", type: "video" },
+  { title: "Classic of Mountains and Seas", software: "DREAMINA + CAPCUT", detail: "AI VISUAL / VIDEO EDIT", src: "/creative-archive/edited-film.mov", type: "video" },
+  { title: "My Italian Life", software: "CAPCUT", detail: "VIDEO EDIT", src: "/creative-archive/animation-study.mov", type: "video" },
 ];
 
 export function CreativeArchive() {
@@ -51,19 +52,19 @@ export function CreativeArchive() {
       ) : (
         <img src={item.src} alt={item.title} />
       )}
-      <span className="creative-tile-meta"><b>{item.title}</b><small>{item.detail}</small></span>
+      <span className="creative-tile-meta"><b>{item.title}</b>{item.software ? <small className="creative-software-meta"><strong>{item.software}</strong><span>{item.detail}</span></small> : <small>{item.detail}</small>}</span>
       <span className="creative-open">OPEN ↗</span>
     </motion.button>
   );
 
-  return <section id="creative-archive" className="creative-archive" aria-labelledby="creative-archive-title">
-    <p className="eyebrow">[ 05 / ILLUSTRATION + MOTION ]</p>
-    <h2 id="creative-archive-title">Illustration<br /><span>&amp; Motion.</span></h2>
+  return <section id="drawings" className="creative-archive" aria-labelledby="creative-archive-title">
+    <p className="eyebrow">[ 02 / DRAWINGS ]</p>
+    <h2 id="creative-archive-title">Drawings<br /><span>&amp; Motion.</span></h2>
     <p className="creative-intro">A small collection of visual experiments — from fashion objects and campaign posters to a growing zodiac universe and moving-image studies.</p>
 
-    <div id="small-drawings" className="creative-featured">{featured.map((item) => <Tile key={item.title} item={item} />)}</div>
+    <div className="creative-featured">{featured.map((item) => <Tile key={item.title} item={item} />)}</div>
     <div className="creative-subhead"><p>12 ZODIAC STUDIES / SELECTED SIX</p><i>✦</i></div>
-    <div id="colour-experiments" className="creative-zodiac">{zodiac.map((item) => <Tile key={item.title} item={item} />)}</div>
+    <div className="creative-zodiac">{zodiac.map((item) => <Tile key={item.title} item={item} />)}</div>
     <div className="creative-subhead"><p>MOVING IMAGE</p><i>✦</i></div>
     <div className="creative-motion">{motionWorks.map((item) => <Tile key={item.title} item={item} />)}</div>
 
