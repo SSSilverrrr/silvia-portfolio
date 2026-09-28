@@ -360,6 +360,10 @@ html{scroll-behavior:smooth}.playground-slot{position:relative;text-decoration:n
 .functional-look-gallery .look-lab-figure:nth-child(1),.functional-look-gallery .look-lab-figure:nth-child(3){grid-column:1}
 .functional-look-gallery .look-lab-figure:nth-child(2),.functional-look-gallery .look-lab-figure:nth-child(4){grid-column:3}
 .functional-look-series>header h3{color:var(--pink)}
+.material-experimental-series>header h3{color:var(--cyan)}
+.material-experimental-group+ .material-experimental-group{margin-top:100px}
+.material-experimental-group>h4{display:flex;align-items:center;gap:14px;max-width:1080px;margin:0 auto 32px;font:700 13px/1 "Space Mono","Courier New",monospace;letter-spacing:.12em}
+.material-experimental-group>h4 span{display:grid;width:26px;height:26px;place-items:center;border:1px solid #111;border-radius:50%;font-size:9px;letter-spacing:0}
 .creative-archive,.photo-gallery[id]{scroll-margin-top:72px}
 
 @media(max-width:1000px){
@@ -394,7 +398,9 @@ html{scroll-behavior:smooth}.playground-slot{position:relative;text-decoration:n
   .look-lab-series>header p{white-space:normal}
   .look-lab-series>header h3{margin-top:16px;font-size:2.7rem;text-align:left}
   .look-lab-gallery{grid-template-columns:1fr;gap:48px}
-  .visualizing-look-gallery .look-lab-figure:nth-child(n),.functional-look-gallery .look-lab-figure:nth-child(n){grid-column:auto;width:100%;margin:0}
+  .material-experimental-group+ .material-experimental-group{margin-top:78px}
+  .material-experimental-group>h4{margin-bottom:28px}
+  .visualizing-look-gallery .look-lab-figure:nth-child(n),.functional-look-gallery .look-lab-figure:nth-child(n),.material-experimental-look-gallery .look-lab-figure:nth-child(n){grid-column:auto;width:100%;margin:0}
 }
 
 .home-folder-mobile-toggle{display:none}
@@ -543,10 +549,10 @@ html{scroll-behavior:smooth}.playground-slot{position:relative;text-decoration:n
   .look-lab-series+ .look-lab-series{margin-top:96px}
   .look-lab-series>header h3{font-size:clamp(2.15rem,11.4vw,2.75rem);overflow-wrap:anywhere}
   .look-lab-gallery{grid-auto-flow:row;gap:40px}
-  .visualizing-look-gallery .look-lab-figure:nth-child(n),.functional-look-gallery .look-lab-figure:nth-child(n){width:min(76vw,285px);justify-self:center}
-  .visualizing-look-gallery .look-lab-figure:nth-child(1),.functional-look-gallery .look-lab-figure:nth-child(1){order:1}
-  .visualizing-look-gallery .look-lab-figure:nth-child(2),.functional-look-gallery .look-lab-figure:nth-child(2){order:2}
-  .visualizing-look-gallery .look-lab-figure:nth-child(3),.functional-look-gallery .look-lab-figure:nth-child(3){order:3}
+  .visualizing-look-gallery .look-lab-figure:nth-child(n),.functional-look-gallery .look-lab-figure:nth-child(n),.material-experimental-look-gallery .look-lab-figure:nth-child(n){width:min(76vw,285px);justify-self:center}
+  .visualizing-look-gallery .look-lab-figure:nth-child(1),.functional-look-gallery .look-lab-figure:nth-child(1),.material-experimental-look-gallery .look-lab-figure:nth-child(1){order:1}
+  .visualizing-look-gallery .look-lab-figure:nth-child(2),.functional-look-gallery .look-lab-figure:nth-child(2),.material-experimental-look-gallery .look-lab-figure:nth-child(2){order:2}
+  .visualizing-look-gallery .look-lab-figure:nth-child(3),.functional-look-gallery .look-lab-figure:nth-child(3),.material-experimental-look-gallery .look-lab-figure:nth-child(3){order:3}
   .visualizing-look-gallery .look-lab-figure:nth-child(4),.functional-look-gallery .look-lab-figure:nth-child(4){order:4}
   .visualizing-look-gallery .look-lab-figure:nth-child(5){order:5}
   .look-lab-image{height:auto;aspect-ratio:2/3}
@@ -604,5 +610,5 @@ html{scroll-behavior:smooth}.playground-slot{position:relative;text-decoration:n
   .template-actions .contact-action{padding:6px;font-size:8px}
   .home-folder-copy h3{font-size:clamp(2.05rem,11.2vw,2.7rem)}
   .about-side-nav a{min-width:60px}
-  .selected-looks-gallery figure:nth-child(n),.visualizing-look-gallery .look-lab-figure:nth-child(n),.functional-look-gallery .look-lab-figure:nth-child(n){width:min(78vw,270px)}
+  .selected-looks-gallery figure:nth-child(n),.visualizing-look-gallery .look-lab-figure:nth-child(n),.functional-look-gallery .look-lab-figure:nth-child(n),.material-experimental-look-gallery .look-lab-figure:nth-child(n){width:min(78vw,270px)}
 }

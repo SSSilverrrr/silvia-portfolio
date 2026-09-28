@@ -24,6 +24,33 @@ const functionalLooks: Look[] = [
   { number: "04", src: "/look-lab/functional-fashion/04.png", width: 864, height: 1152, alt: "Functional Fashion look 04" },
 ];
 
+const materialExperimentalGroups: Array<{ title: string; looks: Look[] }> = [
+  {
+    title: "METAVERSE",
+    looks: [
+      { number: "01", src: "/look-lab/material-experimental/01.png", width: 1024, height: 1536, alt: "Material Experimental Metaverse look 01" },
+      { number: "02", src: "/look-lab/material-experimental/02.png", width: 1024, height: 1536, alt: "Material Experimental Metaverse look 02" },
+      { number: "03", src: "/look-lab/material-experimental/03.png", width: 1024, height: 1536, alt: "Material Experimental Metaverse look 03" },
+    ],
+  },
+  {
+    title: "MICROSCOPE",
+    looks: [
+      { number: "04", src: "/look-lab/material-experimental/04.png", width: 1024, height: 1536, alt: "Material Experimental Microscope look 04" },
+      { number: "05", src: "/look-lab/material-experimental/05.png", width: 1024, height: 1536, alt: "Material Experimental Microscope look 05" },
+      { number: "06", src: "/look-lab/material-experimental/06.png", width: 1024, height: 1536, alt: "Material Experimental Microscope look 06" },
+    ],
+  },
+  {
+    title: "1990s",
+    looks: [
+      { number: "07", src: "/look-lab/material-experimental/07.png", width: 1024, height: 1536, alt: "Material Experimental 1990s look 07" },
+      { number: "08", src: "/look-lab/material-experimental/08.png", width: 1024, height: 1536, alt: "Material Experimental 1990s look 08" },
+      { number: "09", src: "/look-lab/material-experimental/09.png", width: 1024, height: 1536, alt: "Material Experimental 1990s look 09" },
+    ],
+  },
+];
+
 const selectedLookNumbers = new Set(["01", "04", "05"]);
 const selectedLooks = visualizingLooks.filter((look) => selectedLookNumbers.has(look.number));
 
@@ -89,6 +116,19 @@ export function LookLab() {
         <h3 id="functional-series-title">FUNCTIONAL FASHION</h3>
       </header>
       <EditorialGallery looks={functionalLooks} seriesClass="functional-look-gallery" />
+    </section>
+
+    <section className="look-lab-series material-experimental-series" aria-labelledby="material-experimental-series-title">
+      <header>
+        <p>03 — MATERIAL STUDY</p>
+        <h3 id="material-experimental-series-title">MATERIAL EXPERIMENTAL</h3>
+      </header>
+      <div className="material-experimental-groups">
+        {materialExperimentalGroups.map((group, index) => <section className="material-experimental-group" key={group.title}>
+          <h4><span>{String(index + 1).padStart(2, "0")}</span>{group.title}</h4>
+          <EditorialGallery looks={group.looks} seriesClass="material-experimental-look-gallery" />
+        </section>)}
+      </div>
     </section>
   </section>;
 }
