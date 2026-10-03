@@ -12,7 +12,7 @@ export default function PlaygroundPage() {
     <section className="playground-shelf">
       <a href="#look-lab" className="playground-slot look-slot"><span>01</span><h2>Look Lab</h2><p>Original garment concepts and selected fashion looks.</p><b>EXPLORE LOOKS ↘</b></a>
       <a href="#drawings" className="playground-slot sketch-slot"><span>02</span><h2>Drawings</h2><p>Illustration, textile concepts and visual notes.</p><b>OPEN ARCHIVE ↘</b></a>
-      <a href="#photography" className="playground-slot photo-slot"><span>03</span><h2>Photography</h2><p>Dreamscape, Northwest and Divine Girl — frames, textures and observations from daily life and travel.</p><b>36 FRAMES BELOW ↘</b></a>
+      <a href="#photography" className="playground-slot photo-slot"><span>03</span><h2>Photography</h2><p>Dreamscape and Northwest — frames, textures and observations from daily life and travel.</p><b>27 FRAMES BELOW ↘</b></a>
     </section>
     <LookLab />
     <CreativeArchive />
@@ -25,11 +25,6 @@ export default function PlaygroundPage() {
       <p className="eyebrow">[ 03 / PHOTOGRAPHY — 02 ]</p><h2 id="northwest-series-title">Northwest<br /><span>Series.</span></h2>
       <p className="photo-gallery-intro">Nine photographs from Northwest China — open roads, changing light and quiet landscapes collected along the way.</p>
       <ButterflyBook folder="northwest-series" count={9} title="Northwest Series" />
-    </section>
-    <section className="photo-gallery divine-girl-gallery" aria-labelledby="divine-girl-series-title">
-      <p className="eyebrow">[ 03 / PHOTOGRAPHY — 03 ]</p><h2 id="divine-girl-series-title">Divine<br /><span>Girl.</span></h2>
-      <p className="photo-gallery-intro">神明少女 — nine dreamlike portraits exploring softness, ritual and a quiet otherworldly gaze.</p>
-      <ButterflyBook folder="divine-girl-series" count={9} title="Divine Girl" fileExtension="jpg" />
     </section>
     <ContactBanner />
   </main>;

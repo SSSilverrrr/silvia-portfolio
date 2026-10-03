@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { SelectedLooksCarousel } from "./SelectedLooksCarousel";
 
 type Look = {
   number: string;
@@ -10,18 +10,50 @@ type Look = {
 };
 
 const visualizingLooks: Look[] = [
-  { number: "01", src: "/look-lab/visualizing-the-invisible/01.png", width: 1024, height: 1535, alt: "Visualizing the Invisible look 01" },
+  { number: "01", src: "/look-lab/visualizing-the-invisible/perception-01.jpg", width: 1600, height: 2133, alt: "Visualizing the Invisible Perception look 01" },
+  { number: "01-2", src: "/look-lab/visualizing-the-invisible/perception-02.jpg", width: 1600, height: 2133, alt: "Visualizing the Invisible Perception look 01 variation 2" },
+  { number: "01-3", src: "/look-lab/visualizing-the-invisible/perception-03.jpg", width: 1600, height: 2133, alt: "Visualizing the Invisible Perception look 01 variation 3" },
   { number: "02", src: "/look-lab/visualizing-the-invisible/02.png", width: 1086, height: 1448, alt: "Visualizing the Invisible look 02" },
   { number: "03", src: "/look-lab/visualizing-the-invisible/03.png", width: 992, height: 1586, alt: "Visualizing the Invisible look 03" },
-  { number: "04", src: "/look-lab/visualizing-the-invisible/04.png", width: 1023, height: 1537, alt: "Visualizing the Invisible look 04" },
-  { number: "05", src: "/look-lab/visualizing-the-invisible/05.png", width: 1023, height: 1537, alt: "Visualizing the Invisible look 05" },
+  { number: "04", src: "/look-lab/visualizing-the-invisible/summoning-04.jpg", width: 1600, height: 2133, alt: "Visualizing the Invisible Summoning look 04" },
+  { number: "04-2", src: "/look-lab/visualizing-the-invisible/summoning-05.jpg", width: 1600, height: 2133, alt: "Visualizing the Invisible Summoning look 04 variation 2" },
+  { number: "04-3", src: "/look-lab/visualizing-the-invisible/summoning-06.jpg", width: 1600, height: 2133, alt: "Visualizing the Invisible Summoning look 04 variation 3" },
+  { number: "05", src: "/look-lab/visualizing-the-invisible/insight-07.jpg", width: 1600, height: 2133, alt: "Visualizing the Invisible Insight look 05" },
+  { number: "05-2", src: "/look-lab/visualizing-the-invisible/insight-08.jpg", width: 1600, height: 2133, alt: "Visualizing the Invisible Insight look 05 variation 2" },
+  { number: "05-3", src: "/look-lab/visualizing-the-invisible/insight-09.jpg", width: 1600, height: 2134, alt: "Visualizing the Invisible Insight look 05 variation 3" },
 ];
 
-const functionalLooks: Look[] = [
-  { number: "01", src: "/look-lab/functional-fashion/01.png", width: 768, height: 1024, alt: "Functional Fashion look 01" },
-  { number: "02", src: "/look-lab/functional-fashion/02.png", width: 768, height: 1024, alt: "Functional Fashion look 02" },
-  { number: "03", src: "/look-lab/functional-fashion/03.png", width: 864, height: 1152, alt: "Functional Fashion look 03" },
-  { number: "04", src: "/look-lab/functional-fashion/04.png", width: 864, height: 1152, alt: "Functional Fashion look 04" },
+const visualizingLookGroups: Array<{ title: string; looks: Look[] }> = [
+  { title: "PERCEPTION", looks: visualizingLooks.slice(0, 5) },
+  { title: "SUMMONING", looks: visualizingLooks.slice(5, 8) },
+  { title: "INSIGHT", looks: visualizingLooks.slice(8, 11) },
+];
+
+const functionalLookGroups: Array<{ title: string; looks: Look[] }> = [
+  {
+    title: "BODYEXTENSION",
+    looks: [
+      { number: "01", src: "/look-lab/functional-fashion/v2-01.png", width: 1024, height: 1536, alt: "Functional Fashion Bodyextension look 01" },
+      { number: "02", src: "/look-lab/functional-fashion/v2-02.png", width: 1024, height: 1536, alt: "Functional Fashion Bodyextension look 02" },
+      { number: "03", src: "/look-lab/functional-fashion/v2-03.png", width: 1024, height: 1536, alt: "Functional Fashion Bodyextension look 03" },
+    ],
+  },
+  {
+    title: "BODYSHAPE",
+    looks: [
+      { number: "04", src: "/look-lab/functional-fashion/v2-04.png", width: 1024, height: 1536, alt: "Functional Fashion Bodyshape look 04" },
+      { number: "05", src: "/look-lab/functional-fashion/v2-05.png", width: 1024, height: 1536, alt: "Functional Fashion Bodyshape look 05" },
+      { number: "06", src: "/look-lab/functional-fashion/v2-06.png", width: 1024, height: 1536, alt: "Functional Fashion Bodyshape look 06" },
+    ],
+  },
+  {
+    title: "BODYSKIN",
+    looks: [
+      { number: "07", src: "/look-lab/functional-fashion/v2-07.png", width: 1024, height: 1536, alt: "Functional Fashion Bodyskin look 07" },
+      { number: "08", src: "/look-lab/functional-fashion/v2-08.png", width: 1024, height: 1536, alt: "Functional Fashion Bodyskin look 08" },
+      { number: "09", src: "/look-lab/functional-fashion/v2-09.png", width: 1024, height: 1536, alt: "Functional Fashion Bodyskin look 09" },
+    ],
+  },
 ];
 
 const materialExperimentalGroups: Array<{ title: string; looks: Look[] }> = [
@@ -51,12 +83,19 @@ const materialExperimentalGroups: Array<{ title: string; looks: Look[] }> = [
   },
 ];
 
-const selectedLookNumbers = new Set(["01", "04", "05"]);
-const selectedLooks = visualizingLooks.filter((look) => selectedLookNumbers.has(look.number));
+const findLooks = (looks: Look[], numbers: string[]) => numbers.map((number) => looks.find((look) => look.number === number)).filter((look): look is Look => Boolean(look));
+const functionalLooks = functionalLookGroups.flatMap((group) => group.looks);
+const materialExperimentalLooks = materialExperimentalGroups.flatMap((group) => group.looks);
+
+const selectedLookGroups = [
+  { title: "VISUALIZING THE INVISIBLE", looks: findLooks(visualizingLooks, ["01", "04", "05"]) },
+  { title: "FUNCTIONAL FASHION", looks: findLooks(functionalLooks, ["01", "04", "08"]) },
+  { title: "MATERIAL EXPERIMENTAL", looks: findLooks(materialExperimentalLooks, ["02", "04", "08"]) },
+];
 
 function EditorialGallery({ looks, seriesClass }: { looks: Look[]; seriesClass: string }) {
   return <div className={`look-lab-gallery ${seriesClass}`}>
-    {looks.map((look) => <figure className="look-lab-figure" key={look.src}>
+    {looks.map((look) => <figure className="look-lab-figure" data-look-number={look.number} key={look.src}>
       <div className="look-lab-image">
         <Image
           src={look.src}
@@ -72,26 +111,7 @@ function EditorialGallery({ looks, seriesClass }: { looks: Look[]; seriesClass: 
 }
 
 export function SelectedLooks() {
-  return <section className="selected-looks canvas-section" aria-labelledby="selected-looks-title">
-    <header className="selected-looks-header">
-      <p>[ ONGOING SERIES / 2026 ]</p>
-      <h2 id="selected-looks-title">SELECTED<br /><span>LOOKS</span></h2>
-      <p>Visualizing the Invisible</p>
-    </header>
-    <div className="selected-looks-gallery">
-      {selectedLooks.map((look) => <figure key={look.src}>
-        <Image
-          src={look.src}
-          width={look.width}
-          height={look.height}
-          sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1000px) 46vw, 28vw"
-          alt={look.alt}
-        />
-        <figcaption>LOOK {look.number}</figcaption>
-      </figure>)}
-    </div>
-    <Link className="selected-looks-link" href="/playground">EXPLORE LOOK LAB <span>→</span></Link>
-  </section>;
+  return <SelectedLooksCarousel groups={selectedLookGroups} />;
 }
 
 export function LookLab() {
@@ -107,7 +127,12 @@ export function LookLab() {
         <p>01 — GRADUATION PROJECT / ONGOING</p>
         <h3 id="visualizing-series-title">VISUALIZING THE INVISIBLE</h3>
       </header>
-      <EditorialGallery looks={visualizingLooks} seriesClass="visualizing-look-gallery" />
+      <div className="visualizing-look-groups">
+        {visualizingLookGroups.map((group, index) => <section className="visualizing-look-group" key={group.title}>
+          <h4><span>{String(index + 1).padStart(2, "0")}</span>{group.title}</h4>
+          <EditorialGallery looks={group.looks} seriesClass="visualizing-look-gallery" />
+        </section>)}
+      </div>
     </section>
 
     <section className="look-lab-series functional-look-series" aria-labelledby="functional-series-title">
@@ -115,7 +140,12 @@ export function LookLab() {
         <p>02 — FASHION DESIGN</p>
         <h3 id="functional-series-title">FUNCTIONAL FASHION</h3>
       </header>
-      <EditorialGallery looks={functionalLooks} seriesClass="functional-look-gallery" />
+      <div className="functional-look-groups">
+        {functionalLookGroups.map((group, index) => <section className="functional-look-group" key={group.title}>
+          <h4><span>{String(index + 1).padStart(2, "0")}</span>{group.title}</h4>
+          <EditorialGallery looks={group.looks} seriesClass="functional-look-gallery" />
+        </section>)}
+      </div>
     </section>
 
     <section className="look-lab-series material-experimental-series" aria-labelledby="material-experimental-series-title">
